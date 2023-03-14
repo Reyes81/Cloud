@@ -17,7 +17,7 @@ module "networking"{
  # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/networking_secgroup_v2
 module "secgroup"{
    source = "./modules/secgroup"
-   sec_group_name = var.sec_group_name
+   secgroup_name = var.sec_group_name
  }
 
 # # Creación de una regla en el grupo de seguridad
@@ -26,7 +26,6 @@ module "secgroup"{
   module "secgroup_rule_http"{
     source = "./modules/secgroup_rule"
     secgroup_id = module.secgroup.security_group_id
-    secgroup_rule_name = var.secgroup_rule_name
     port_ini = var.port_ini
     port_fin = var.port_fin
  }
@@ -35,14 +34,14 @@ module "secgroup"{
 # # See
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
 # module "server1" {
-#   source = "./modules/server"
-#   server_name = var.server1_name
-#   flavor_name = var.flavor_name
-#   key_name = var.key_name
-#   user_data_file = var.user_data1_file
-#   net_name=var.network_name
-#   secgroup_name=var.security_group_name
-#}
+   source = "./modules/server"
+   server_name = var.server1_name
+   flavor_name = var.flavor_name
+   key_name = var.key_name
+   user_data_file = var.user_data1_file
+   net_name=var.network_name
+   secgroup_name=var.security_group_name
+}
 
 # # Creación de un servidor con nginx en la red creada (donde estará el balanceador de carga)
 # # See
