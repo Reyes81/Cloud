@@ -1,0 +1,18 @@
+#cloud-config
+package-update: true
+packages:
+   - nginx-light
+password: twcam-proyecto4
+chpasswd:
+   expire: false
+ssh_pauth: true
+
+write_files:
+  - content: |
+      <html><body><h1>Respuesta desde el nodo 1 </h1>Contenido...</body></html>
+    path: /var/www/html/index.html
+
+
+
+
+

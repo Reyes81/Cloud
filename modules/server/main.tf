@@ -4,8 +4,9 @@ resource "openstack_compute_instance_v2" "server" {
 
   #openstack flavor list
   flavor_id       = "10522180-0fa9-4d83-be8b-250330bd4c0a"
-  key_pair        = "claveproyecto4"
-  security_groups = ["${openstack_compute_secgroup_v2.secgroup.name}"]
+  key_pair        = var.key_name
+  security_groups = [var.sec_group_name]
+  user_data = file("././nginx1.yml")
 
   metadata = {
     this = "that"
