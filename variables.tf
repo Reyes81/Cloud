@@ -6,11 +6,11 @@ variable "sec_group_name" {}
 variable "secgroup_rule_name" {}
 variable "port_ini" {}
 variable "port_fin" {}
-variable "server_name" {}
-variable "flavor_name" {}
+# variable "flavor_name" {}
 variable "key_name" {}
-variable "user_data_file" {}
-#variable "server2_name" {}
-#variable "server3_name" {}
-#variable "user_data2_file" {}
-#variable "user_data3_file" {}
+variable "server1_name" {}
+variable "user_data1_file" {}
+variable "server2_name" {}
+variable "user_data2_file" {}
+variable "server3_name" {}
+variable "user_data3_file" {}

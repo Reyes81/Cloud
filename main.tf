@@ -35,10 +35,10 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
   module "server1" {
     source = "./modules/server"
-    server_name = var.server_name
-    flavor_name = var.flavor_name
+    server_name = var.server1_name
+    # flavor_name = var.flavor_name
     key_name = var.key_name
-    user_data_file = var.user_data_file
+    user_data_file = var.user_data1_file
     net_name=var.network_name
     sec_group_name=var.sec_group_name
  }
@@ -49,10 +49,10 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
  module "server2" {
    source = "./modules/server"
-   server_name = var.server_name
-   flavor_name = var.flavor_name
+   server_name = var.server2_name
+   # flavor_name = var.flavor_name
    key_name = var.key_name
-   user_data_file = var.user_data_file
+   user_data_file = var.user_data2_file
    net_name=var.network_name
    sec_group_name=var.sec_group_name
 }
@@ -62,10 +62,10 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
  module "server3" {
    source = "./modules/server"
-   server_name = var.server_name
-   flavor_name = var.flavor_name
+   server_name = var.server3_name
+   # flavor_name = var.flavor_name
    key_name = var.key_name
-   user_data_file = var.user_data_file
+   user_data_file = var.user_data3_file
    net_name=var.network_name
    sec_group_name=var.sec_group_name
 }
