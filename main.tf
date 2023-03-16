@@ -35,6 +35,7 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
   module "server1" {
     source = "./modules/server"
+    depends_on = [module.networking]
     server_name = var.server1_name
     # flavor_name = var.flavor_name
     key_name = var.key_name
@@ -49,6 +50,7 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
  module "server2" {
    source = "./modules/server"
+   depends_on = [module.server1]
    server_name = var.server2_name
    # flavor_name = var.flavor_name
    key_name = var.key_name
@@ -62,6 +64,7 @@ module "secgroup"{
 # # https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_instance_v2
  module "server3" {
    source = "./modules/server"
+   depends_on = [module.server2]
    server_name = var.server3_name
    # flavor_name = var.flavor_name
    key_name = var.key_name

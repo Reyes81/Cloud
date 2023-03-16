@@ -6,7 +6,8 @@ resource "openstack_compute_instance_v2" "server" {
   flavor_id       = "10522180-0fa9-4d83-be8b-250330bd4c0a"
   key_pair        = var.key_name
   security_groups = [var.sec_group_name]
-  user_data = file("././nginx1.yml")
+  # user_data = file("././nginx1.yml")
+  user_data = "${file(var.user_data_file)}"
 
   metadata = {
     this = "that"
