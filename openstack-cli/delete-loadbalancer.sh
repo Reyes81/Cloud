@@ -6,8 +6,21 @@
 #                                                                  #
 ####################################################################
 
-ID_port=$(openstack port list -c ID -f value)
+
+#while read file;
+#do
+#    var=`echo $file | grep -q "loadbalancer"`
+#    if [[ $var -eq 0 ]]
+#    then
+#    ID_port=`cut -f1 -d '' $var` 
+#    fi
+#done < openstack port list
+ID_port=`echo $(openstack port list -c ID -f value ) | cut -d ' ' -f6`
+
 echo ${ID_port}
+
+#ID_port=$(openstack port list -c ID -f value)
+#echo ${ID_port}
 #Quitamos las reglas de seguridad al puerto del balanceador
 #neutron port-update --no-security-group d531d833-a05a-46d4-864e-1b38063677e7
 #sleep 1
