@@ -13,7 +13,6 @@ ID_monitor=`neutron lbaas-healthmonitor-list -f yaml | grep id | cut -f 2 -d ':'
 
 echo ${ID_port_balancer}
 echo ${ID_floating_ip}
-echo ${ID_members}
 
 #Obtenemos los ID de los miembros del pool
 members=[]
