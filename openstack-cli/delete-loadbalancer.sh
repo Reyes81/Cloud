@@ -8,10 +8,11 @@
 
 #Obtenemos los IDs necesarios para ejecutar los comandos
 ID_port_balancer=`openstack port list|grep loadbalancer|cut -f2 -d'|'|cut -b2-`
-IP_floating_ip=`openstack floating ip list|grep $ID_port_balancer|cut -f2 -d'|'|cut -b2-`
+ID_floating_ip=`openstack floating ip list|grep $ID_port_balancer|cut -f2 -d'|'|cut -b2-`
+ID_monitor=`neutron lbaas-healthmonitor-list -f yaml | grep id | cut -f 2 -d ':'|cut -b2-`
 
 echo ${ID_port_balancer}
-echo ${IP_floating_ip}
+echo ${ID_floating_ip}
 echo ${ID_members}
 
 #Obtenemos los ID de los miembros del pool
@@ -31,12 +32,12 @@ neutron port-update --no-security-group ${ID_port_balancer}
 sleep 1
 
 #Desasociacimos ID del puerto y el ID de la IP flotante
-neutron floatingip-disassociate ${IP_floating_ip} ${ID_port_balancer}
+neutron floatingip-disassociate ${ID_floating_ip} ${ID_port_balancer}
 sleep 1
 
 #Eliminamos monitor
-#neutron lbaas-healthmonitor-delete 22e00bdb-42c3-4dc0-869b-56fbb34fa7fc
-#sleep 1
+neutron lbaas-healthmonitor-delete ${ID_monitor}
+sleep 1
 
 #Eliminamos los miembros del pool
 neutron lbaas-member-delete ${members[0]}
