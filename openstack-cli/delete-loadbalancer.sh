@@ -20,7 +20,9 @@ do
     ((i++))
 done
 
+echo ${members[0]}
 echo ${members[1]}
+echo ${members[2]}
 
 
 #Quitamos las reglas de seguridad al puerto del balanceador
