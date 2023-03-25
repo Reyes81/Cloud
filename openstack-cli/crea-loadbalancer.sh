@@ -36,7 +36,7 @@ neutron lbaas-member-create --subnet proyecto4-subnetwork-lab2 --address ${IP_se
 sleep 1
 neutron lbaas-member-create --subnet proyecto4-subnetwork-lab2 --address ${IP_servers[1]} --protocol-port 80 proyecto4-pool
 sleep 1
-neutron lbaas-member-create --subnet proyecto4-subnetwork-lab2 --address ${IP_servers[2} --protocol-port 80 proyecto4-pool
+neutron lbaas-member-create --subnet proyecto4-subnetwork-lab2 --address ${IP_servers[2]} --protocol-port 80 proyecto4-pool
 sleep 1
 
 #Creamos un monitor y lo asociamos al pool
