@@ -21,16 +21,8 @@ sleep 15
 
 #Obtenemos los IDs necesarios para ejecutar los comandos
 ID_port_balancer=`openstack port list|grep loadbalancer|cut -f2 -d'|'|cut -b2-`
-#ID_floating_ip=`openstack floating ip list|grep $ID_port_balancer|cut -f2 -d'|'|cut -b2-`
-ID_floating_ip=7beebe88-10ae-4b8f-ac68-e954515ec239
+ID_floating_ip=`openstack floating ip list -f yaml|grep ID|cut -f2- -d ':' | head -1`
 sleep 15
-
-echo "Teeeeest"
-echo ${ID_port_balancer}
-echo ${ID_floating_ip}
-echo ${IP_servers[0]}
-echo ${IP_servers[1]}
-echo ${IP_servers[2]}
 
 #Creamos el listener
 neutron lbaas-listener-create --name proyecto4-listener --loadbalancer proyecto4-balanceador --protocol HTTP --protocol-port 80

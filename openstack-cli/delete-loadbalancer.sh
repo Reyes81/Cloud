@@ -28,36 +28,36 @@ echo ${members[1]}
 
 #Quitamos las reglas de seguridad al puerto del balanceador
 neutron port-update --no-security-group ${ID_port_balancer}
-sleep 1
+sleep 10
 
 #Desasociacimos ID del puerto y el ID de la IP flotante
 neutron floatingip-disassociate ${ID_floating_ip} ${ID_port_balancer}
-sleep 1
+sleep 10
 
 #Eliminamos monitor
 neutron lbaas-healthmonitor-delete ${ID_monitor}
-sleep 1
+sleep 10
 
 #Eliminamos los miembros del pool
-neutron lbaas-member-delete ${members[0]}
-sleep 1
+neutron lbaas-member-delete ${members[0]} proyecto4-pool
+sleep 10
 
-neutron lbaas-member-delete ${members[1]}
-sleep 1
+neutron lbaas-member-delete ${members[1]} proyecto4-pool
+sleep 10
 
-neutron lbaas-member-delete ${members[2]}
-sleep 1
+neutron lbaas-member-delete ${members[2]} proyecto4-pool
+sleep 10
 
 #Eliminamos el pool
 neutron lbaas-pool-delete proyecto4-pool
-sleep 1
+sleep 10
 
 #Eliminamos el listener
 neutron lbaas-listener-delete proyecto4-listener
-sleep 1
+sleep 10
 
 #Eliminamos el balanceador
 neutron lbaas-loadbalancer-delete proyecto4-balanceador
-sleep 1
+sleep 10
 
 
