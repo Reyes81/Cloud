@@ -11,9 +11,6 @@ ID_port_balancer=`openstack port list|grep loadbalancer|cut -f2 -d'|'|cut -b2-`
 ID_floating_ip=`openstack floating ip list|grep $ID_port_balancer|cut -f2 -d'|'|cut -b2-`
 ID_monitor=`neutron lbaas-healthmonitor-list -f yaml | grep id | cut -f 2 -d ':'|cut -b2-`
 
-echo ${ID_port_balancer}
-echo ${ID_floating_ip}
-
 #Obtenemos los ID de los miembros del pool
 members=[]
 i=0

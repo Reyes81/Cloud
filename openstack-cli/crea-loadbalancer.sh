@@ -40,7 +40,6 @@ sleep 5
 neutron lbaas-member-create --subnet proyecto4-subnetwork-lab2 --address ${IP_servers[2]} --protocol-port 80 proyecto4-pool
 sleep 5
 
-
 #Creamos un monitor y lo asociamos al pool
 neutron lbaas-healthmonitor-create --delay 5 --type HTTP --max-retries 3 --timeout 2 --pool proyecto4-pool
 sleep 5
